@@ -178,7 +178,7 @@ namespace utils
 
 			BOOL Init(LPCWSTR lpPortName);
 
-			BYTE VKCodeToArduinoCode(BYTE VkCode);
+			inline BYTE VKCodeToArduinoCode(BYTE VkCode);
 			virtual void key(INT nKeyCode, INT nKeyStatus);
 			virtual void click(INT nClickCode);
 			virtual void move(INT x, INT y);

@@ -61,6 +61,13 @@ namespace Arduino
 
 	extern std::map<BYTE, BYTE> g_keyMap;
 
+	enum class InputDataType
+	{
+		KEY
+		, MOUSE
+		, BUTTON
+	};
+
 #pragma pack(push, 1)
     typedef struct _InputData
     {
@@ -78,6 +85,8 @@ namespace Arduino
     public:
         ArduinoUtil(LPCWSTR comPort);
         virtual ~ArduinoUtil();
+
+		BYTE virtualToArduino(BYTE vkCode);
 
 		virtual Result button(ButtonType type);
         virtual Result move(UINT x, UINT y, MoveType type);
