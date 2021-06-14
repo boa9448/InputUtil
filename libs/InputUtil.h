@@ -2,6 +2,7 @@
 #include <Windows.h>
 #include <memory>
 #include "ClassDD.h"
+#include "Arduino.h"
 
 namespace Input
 {
@@ -11,6 +12,7 @@ namespace Input
 	{
 		CLASS_DD
 		, ARDUINO
+		, OTHER
 	};
 
 
@@ -21,7 +23,8 @@ namespace Input
 		std::shared_ptr<InputUtilBaseClass> m_inputObject;
 
 	public:
-		InputUtil(InputType type);
+		InputUtil(InputType type, LPVOID param);
+		InputUtil(std::shared_ptr<InputUtilBaseClass> Implement);
 		virtual ~InputUtil();
 
 		Result button(ButtonType type);

@@ -6,24 +6,22 @@ using namespace Input;
 
 void ddTest()
 {
-	ClassDD::DD dd(L"DD64.dll");
+	ClassDD::DD dd(L"..\\dlls\\DD64.dll");
 
 	Sleep(3000);
 
 	for (INT a = 0; a < 10; a++)
 	{
 		dd.key(VK_LEFT, KeyType::KEY_DOWN);
-		//dd.DD_keyEx(VK_LEFT, 1);
 		Sleep(100);
 		dd.key(VK_LEFT, KeyType::KEY_UP);
-		//dd.DD_keyEx(VK_LEFT, 2);
 		Sleep(100);
 	}
 }
 
 void inputUtilTest()
 {
-	InputUtil input(InputType::CLASS_DD);
+	InputUtil input(InputType::CLASS_DD, (LPVOID)L"..\\dlls\\DD64.dll");
 
 	Sleep(3000);
 
@@ -39,6 +37,7 @@ void inputUtilTest()
 
 int main()
 {
+	ddTest();
 	inputUtilTest();
 
 	return 0;
