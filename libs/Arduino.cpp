@@ -71,12 +71,22 @@ namespace Arduino
 
 	Result ArduinoUtil::button(ButtonType type)
 	{
-		return Result::SUCCESS;
+		INPUT_DATA data = { 0, };
+		data.inputType = (BYTE)InputDataType::BUTTON;
+		data.data1 = (INT16)type;
+		data.data2 = 0;
+
+		return this->m_serial.WriteData((BYTE*)&data, sizeof(data)) ? Result::SUCCESS : Result::FAIL;
 	}
 
 	Result ArduinoUtil::move(UINT x, UINT y, MoveType type)
 	{
-		return Result::SUCCESS;
+		INPUT_DATA data = { 0, };
+		data.inputType = (BYTE)InputDataType::MOUSE;
+		data.data1 = (INT16)x;
+		data.data2 = (INT16)y;
+
+		return this->m_serial.WriteData((BYTE*)&data, sizeof(data)) ? Result::SUCCESS : Result::FAIL;
 	}
 
 	Result ArduinoUtil::key(UINT virtualKeyCode, KeyType type)
@@ -84,14 +94,19 @@ namespace Arduino
 		INPUT_DATA data = { 0, };
 		data.inputType = (BYTE)InputDataType::KEY;
 		data.data1 = this->virtualToArduino(virtualKeyCode);
-		data.data2 = (BYTE)type;
+		data.data2 = (INT16)type;
 
 		return this->m_serial.WriteData((BYTE*)&data, sizeof(data)) ? Result::SUCCESS : Result::FAIL;
 	}
 
 	Result ArduinoUtil::wheel(UINT count, WheelType type)
 	{
-		return Result::SUCCESS;
+		INPUT_DATA data = { 0, };
+		data.inputType = (BYTE)InputDataType::WHEEL;
+		data.data1 = (INT16)count;
+		data.data2 = (INT16)type;
+
+		return this->m_serial.WriteData((BYTE*)&data, sizeof(data)) ? Result::SUCCESS : Result::FAIL;
 	}
 
 	Result ArduinoUtil::str(LPCWSTR writeString)

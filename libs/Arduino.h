@@ -66,6 +66,7 @@ namespace Arduino
 		KEY
 		, MOUSE
 		, BUTTON
+		, WHEEL
 	};
 
 #pragma pack(push, 1)
