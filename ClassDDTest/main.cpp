@@ -3,6 +3,7 @@
 
 using namespace InputBase;
 using namespace Input;
+using namespace Arduino;
 
 void ddTest()
 {
@@ -16,6 +17,16 @@ void ddTest()
 		Sleep(100);
 		dd.key(VK_LEFT, KeyType::KEY_UP);
 		Sleep(100);
+	}
+}
+
+void ArduinoTest()
+{
+	ArduinoUtil ar(L"\\\\.\\COM12");
+	for (INT a = 0; a < 10; a++)
+	{
+		ar.key(VK_LEFT, KeyType::KEY_DOWN);
+		Sleep(1000);
 	}
 }
 
@@ -37,8 +48,9 @@ void inputUtilTest()
 
 int main()
 {
-	ddTest();
-	inputUtilTest();
+	//ddTest();
+	ArduinoTest();
+	//inputUtilTest();
 
 	return 0;
 }
