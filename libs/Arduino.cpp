@@ -66,7 +66,9 @@ namespace Arduino
 	inline BYTE ArduinoUtil::virtualToArduino(BYTE vkCode)
 	{
 		if (vkCode >= 65 && vkCode <= 127) return vkCode;
-		return g_keyMap[vkCode];
+		BYTE keyCode = g_keyMap[vkCode];
+
+		return keyCode == 0 ? keyCode : vkCode;
 	}
 
 	Result ArduinoUtil::button(ButtonType type)
@@ -93,8 +95,8 @@ namespace Arduino
 	{
 		INPUT_DATA data = { 0, };
 		data.inputType = (BYTE)InputDataType::KEY;
-		data.data1 = this->virtualToArduino(virtualKeyCode);
-		data.data2 = (INT16)type;
+		data.data1 = (INT16)type;
+		data.data2 = (INT16)this->virtualToArduino(virtualKeyCode);
 
 		return this->m_serial.WriteData((BYTE*)&data, sizeof(data)) ? Result::SUCCESS : Result::FAIL;
 	}
@@ -103,14 +105,31 @@ namespace Arduino
 	{
 		INPUT_DATA data = { 0, };
 		data.inputType = (BYTE)InputDataType::WHEEL;
-		data.data1 = (INT16)count;
-		data.data2 = (INT16)type;
+		data.data1 = (INT16)type;
+		data.data2 = (INT16)count;
 
 		return this->m_serial.WriteData((BYTE*)&data, sizeof(data)) ? Result::SUCCESS : Result::FAIL;
 	}
 
 	Result ArduinoUtil::str(LPCWSTR writeString)
 	{
+		for (INT idx = 0; idx < lstrlen(writeString); idx++)
+		{
+			if (this->press(writeString[idx]) == Result::FAIL) return Result::FAIL;
+		}
+
 		return Result::SUCCESS;
+	}
+
+	Result ArduinoUtil::press(UINT virtualKeyCode, UINT waitTime)
+	{
+		Result result;
+
+		result = this->key(virtualKeyCode, KeyType::KEY_DOWN);
+		Sleep(waitTime);
+		result = this->key(virtualKeyCode, KeyType::KEY_UP);
+		Sleep(waitTime);
+
+		return result;
 	}
 }

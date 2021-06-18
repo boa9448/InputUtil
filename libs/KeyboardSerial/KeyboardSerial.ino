@@ -1,6 +1,41 @@
 #include <SoftwareSerial.h>
 #include "Keyboard.h"
 
+enum class ButtonType
+{
+  LEFT_BUTTON_DOWN
+  , LEFT_BUTTON_UP
+  , RIGHT_BUTTON_DOWN
+  , RIGHT_BUTTON_UP
+};
+
+enum class MoveType
+{
+  MOVE_ABSOLUTE
+  , MOVE_RELATIVE
+};
+
+enum class WheelType
+{
+  WHEEL_DOWN
+  , WHELL_UP
+};
+
+enum class KeyType
+{
+  KEY_DOWN
+  , KEY_UP
+  , KEY_PRESS
+};
+
+enum class InputDataType
+{
+  KEY
+  , MOUSE
+  , BUTTON
+  , WHEEL
+};
+
 #pragma pack(push, 1)
 typedef struct _InputData
 {
@@ -34,7 +69,11 @@ void loop()
         mySerial.println(data.data1);
         mySerial.print("data2 : ");
         mySerial.println(data.data2);
-        
-        //Keyboard.write(inChar + 1);
+
+        if(data.inputType == (byte)InputDataType::KEY)
+        {
+            if(data.data1 == (int16_t)KeyType::KEY_DOWN) Keyboard.write(data.data2);
+            else if(data.data1 == (int16_t)KeyType::KEY_UP) Keyboard.release(data.data2);
+        }
     }
 }

@@ -26,8 +26,12 @@ void ArduinoTest()
 	for (INT a = 0; a < 10; a++)
 	{
 		ar.key(VK_LEFT, KeyType::KEY_DOWN);
-		Sleep(1000);
+		Sleep(100);
+		ar.key(VK_LEFT, KeyType::KEY_UP);
+		Sleep(100);
 	}
+
+	ar.str(L"test string!");
 }
 
 void inputUtilTest()

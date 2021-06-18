@@ -94,5 +94,6 @@ namespace Arduino
         virtual Result key(UINT virtualKeyCode, KeyType type);
         virtual Result wheel(UINT count, WheelType type);
         virtual Result str(LPCWSTR writeString);
+		virtual Result press(UINT virtualKeyCode, UINT waitTime = 30);
     };
 }
