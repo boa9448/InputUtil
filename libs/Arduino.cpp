@@ -65,8 +65,10 @@ namespace Arduino
 
 	inline BYTE ArduinoUtil::virtualToArduino(BYTE vkCode)
 	{
-		if (vkCode >= 65 && vkCode <= 127) return vkCode;
-		return g_keyMap[vkCode];
+		if (65 <= vkCode && vkCode <= 127) return vkCode;
+
+		auto it = g_keyMap.find(vkCode);
+		return it != g_keyMap.end() ? it->second : vkCode;
 	}
 
 	Result ArduinoUtil::button(ButtonType type)
@@ -93,8 +95,8 @@ namespace Arduino
 	{
 		INPUT_DATA data = { 0, };
 		data.inputType = (BYTE)InputDataType::KEY;
-		data.data1 = this->virtualToArduino(virtualKeyCode);
-		data.data2 = (INT16)type;
+		data.data1 = (INT16)type;
+		data.data2 = this->virtualToArduino(virtualKeyCode);
 
 		return this->m_serial.WriteData((BYTE*)&data, sizeof(data)) ? Result::SUCCESS : Result::FAIL;
 	}
@@ -103,8 +105,8 @@ namespace Arduino
 	{
 		INPUT_DATA data = { 0, };
 		data.inputType = (BYTE)InputDataType::WHEEL;
-		data.data1 = (INT16)count;
-		data.data2 = (INT16)type;
+		data.data1 = (INT16)type;
+		data.data2 = (INT16)count;
 
 		return this->m_serial.WriteData((BYTE*)&data, sizeof(data)) ? Result::SUCCESS : Result::FAIL;
 	}
