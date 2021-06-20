@@ -113,6 +113,23 @@ namespace Arduino
 
 	Result ArduinoUtil::str(LPCWSTR writeString)
 	{
+		for (INT idx = 0; idx < lstrlen(writeString); idx++)
+		{
+			if (this->press(writeString[idx]) == Result::FAIL) return Result::FAIL;
+		}
+
 		return Result::SUCCESS;
+	}
+
+	Result ArduinoUtil::press(UINT virtualKeyCode, UINT waitTime)
+	{
+		Result result;
+
+		result = this->key(virtualKeyCode, KeyType::KEY_DOWN);
+		Sleep(waitTime);
+		result = this->key(virtualKeyCode, KeyType::KEY_UP);
+		Sleep(waitTime);
+
+		return result;
 	}
 }
