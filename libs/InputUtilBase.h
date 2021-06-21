@@ -46,7 +46,7 @@ namespace InputBase
 		{
 		}
 
-		LPCSTR what() const noexcept override
+		virtual LPCSTR what() const noexcept override
 		{
 			return this->m_errorString;
 		}

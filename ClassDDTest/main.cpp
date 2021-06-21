@@ -22,7 +22,7 @@ void ddTest()
 
 void ArduinoTest()
 {
-	ArduinoUtil ar(L"\\\\.\\COM12");
+	ArduinoUtil ar(L"COM12");
 	for (INT a = 0; a < 10; a++)
 	{
 		ar.key(VK_LEFT, KeyType::KEY_DOWN);
@@ -53,7 +53,7 @@ void inputUtilTest()
 int main()
 {
 	//ddTest();
-	ArduinoTest();
+	//ArduinoTest();
 	//inputUtilTest();
 
 	return 0;

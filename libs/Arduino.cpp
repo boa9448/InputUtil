@@ -55,7 +55,11 @@ namespace Arduino
 
 	ArduinoUtil::ArduinoUtil(LPCWSTR comPort) : m_serial()
 	{
-		this->m_serial.Init(comPort);
+		std::wstring portName = std::wstring(L"\\\\.\\") + comPort;
+		if (!this->m_serial.Init(portName.c_str()))
+		{
+			throw ArduinoException("com port open fail...");
+		}
 	}
 
 	ArduinoUtil::~ArduinoUtil()
@@ -65,8 +69,6 @@ namespace Arduino
 
 	inline BYTE ArduinoUtil::virtualToArduino(BYTE vkCode)
 	{
-		if (65 <= vkCode && vkCode <= 127) return vkCode;
-
 		auto it = g_keyMap.find(vkCode);
 		return it != g_keyMap.end() ? it->second : vkCode;
 	}

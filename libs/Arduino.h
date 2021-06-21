@@ -1,6 +1,7 @@
 #pragma once
 #include <windows.h>
 #include <map>
+#include <string>
 #include "Serial.h"
 #include "InputUtilBase.h"
 
@@ -60,6 +61,21 @@ namespace Arduino
 	const BYTE KEY_F24 = 0xFB;
 
 	extern std::map<BYTE, BYTE> g_keyMap;
+
+	class ArduinoException : public InputException
+	{
+	private:
+		LPCSTR m_errorString;
+	public:
+		ArduinoException(LPCSTR errorString = NULL) : m_errorString(errorString)
+		{
+		}
+
+		virtual LPCSTR what() const noexcept override
+		{
+			return this->m_errorString;
+		}
+	};
 
 	enum class InputDataType
 	{
