@@ -73,6 +73,29 @@ namespace Arduino
 		return it != g_keyMap.end() ? it->second : vkCode;
 	}
 
+	std::vector<std::wstring> ArduinoUtil::getPortList()
+	{
+		std::vector<std::wstring> comList;
+		WCHAR lpTargetPath[MAX_PATH];
+
+		for (int i = 0; i < 255; i++)
+		{
+			//COM1 과 같은 문자열로 만듬
+			std::wstring str = L"COM" + std::to_wstring(i);
+
+			//해당 장치가 사용 가능한지 체크
+			DWORD test = QueryDosDevice(str.c_str(), lpTargetPath, MAX_PATH);
+
+			if (test != 0)
+			{
+				//사용 가능하다면 리스트에 추가
+				comList.push_back(str);
+			}
+		}
+
+		return comList;
+	}
+
 	Result ArduinoUtil::button(ButtonType type)
 	{
 		INPUT_DATA data = { 0, };

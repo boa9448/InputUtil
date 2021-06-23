@@ -50,11 +50,22 @@ void inputUtilTest()
 
 }
 
+void comPortQueryTest()
+{
+	auto comList = Arduino::ArduinoUtil::getPortList();
+
+	for (auto& com : comList)
+	{
+		std::wcout << com << std::endl;
+	}
+}
+
 int main()
 {
 	//ddTest();
 	//ArduinoTest();
 	//inputUtilTest();
+	comPortQueryTest();
 
 	return 0;
 }

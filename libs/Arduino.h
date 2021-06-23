@@ -1,6 +1,7 @@
 #pragma once
 #include <windows.h>
 #include <map>
+#include <vector>
 #include <string>
 #include "Serial.h"
 #include "InputUtilBase.h"
@@ -104,6 +105,7 @@ namespace Arduino
         virtual ~ArduinoUtil();
 
 		BYTE virtualToArduino(BYTE vkCode);
+		static std::vector<std::wstring> getPortList();
 
 		virtual Result button(ButtonType type);
         virtual Result move(UINT x, UINT y, MoveType type);
