@@ -99,11 +99,13 @@ namespace Arduino
     {
 	private:
 		SerialUtil m_serial;
+		BOOL m_bCharMode;
 
     public:
         ArduinoUtil(LPCWSTR comPort);
         virtual ~ArduinoUtil();
 
+		VOID SetCharMode(BOOL bChar = TRUE) { this->m_bCharMode = bChar; };
 		BYTE virtualToArduino(BYTE vkCode);
 		static std::vector<std::wstring> getPortList();
 

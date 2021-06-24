@@ -22,7 +22,7 @@ void ddTest()
 
 void ArduinoTest()
 {
-	ArduinoUtil ar(L"COM12");
+	ArduinoUtil ar(L"COM14");
 	for (INT a = 0; a < 10; a++)
 	{
 		ar.key(VK_LEFT, KeyType::KEY_DOWN);
@@ -63,9 +63,9 @@ void comPortQueryTest()
 int main()
 {
 	//ddTest();
-	//ArduinoTest();
+	ArduinoTest();
 	//inputUtilTest();
-	comPortQueryTest();
+	//comPortQueryTest();
 
 	return 0;
 }

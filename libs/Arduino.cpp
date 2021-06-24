@@ -54,6 +54,7 @@ namespace Arduino
 	};
 
 	ArduinoUtil::ArduinoUtil(LPCWSTR comPort) : m_serial()
+		, m_bCharMode(FALSE)
 	{
 		std::wstring portName = std::wstring(L"\\\\.\\") + comPort;
 		if (!this->m_serial.Init(portName.c_str()))
@@ -69,6 +70,8 @@ namespace Arduino
 
 	inline BYTE ArduinoUtil::virtualToArduino(BYTE vkCode)
 	{
+		if (this->m_bCharMode) return vkCode;
+
 		auto it = g_keyMap.find(vkCode);
 		return it != g_keyMap.end() ? it->second : vkCode;
 	}
@@ -138,10 +141,12 @@ namespace Arduino
 
 	Result ArduinoUtil::str(LPCWSTR writeString)
 	{
+		this->SetCharMode(TRUE);
 		for (INT idx = 0; idx < lstrlen(writeString); idx++)
 		{
 			if (this->press(writeString[idx]) == Result::FAIL) return Result::FAIL;
 		}
+		this->SetCharMode(FALSE);
 
 		return Result::SUCCESS;
 	}
