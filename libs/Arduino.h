@@ -86,6 +86,12 @@ namespace Arduino
 		, WHEEL
 	};
 
+	typedef struct _charData
+	{
+		DWORD mod;
+		CHAR c;
+	}CHAR_DATA;
+
 #pragma pack(push, 1)
     typedef struct _InputData
     {
@@ -99,13 +105,11 @@ namespace Arduino
     {
 	private:
 		SerialUtil m_serial;
-		BOOL m_bCharMode;
 
     public:
         ArduinoUtil(LPCWSTR comPort);
         virtual ~ArduinoUtil();
 
-		VOID SetCharMode(BOOL bChar = TRUE) { this->m_bCharMode = bChar; };
 		BYTE virtualToArduino(BYTE vkCode);
 		static std::vector<std::wstring> getPortList();
 

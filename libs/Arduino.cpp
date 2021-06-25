@@ -70,8 +70,6 @@ namespace Arduino
 
 	inline BYTE ArduinoUtil::virtualToArduino(BYTE vkCode)
 	{
-		if (this->m_bCharMode) return vkCode;
-
 		auto it = g_keyMap.find(vkCode);
 		return it != g_keyMap.end() ? it->second : vkCode;
 	}
@@ -141,12 +139,22 @@ namespace Arduino
 
 	Result ArduinoUtil::str(LPCWSTR writeString)
 	{
-		this->SetCharMode(TRUE);
+		/*std::wstring temp = writeString;
+		std::vector<CHAR_DATA> buf(temp.length());
+		for (auto& c : temp)
+		{
+			CHAR_DATA data = { 0, c };
+			if (!std::islower(c)) data.mod = VK_SHIFT;
+
+			buf.push_back(data);
+		}
+
+		//여기서 실제 키입력 작업 작성할것.
+		*/
 		for (INT idx = 0; idx < lstrlen(writeString); idx++)
 		{
 			if (this->press(writeString[idx]) == Result::FAIL) return Result::FAIL;
 		}
-		this->SetCharMode(FALSE);
 
 		return Result::SUCCESS;
 	}
