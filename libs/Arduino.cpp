@@ -54,7 +54,6 @@ namespace Arduino
 	};
 
 	ArduinoUtil::ArduinoUtil(LPCWSTR comPort) : m_serial()
-		, m_bCharMode(FALSE)
 	{
 		std::wstring portName = std::wstring(L"\\\\.\\") + comPort;
 		if (!this->m_serial.Init(portName.c_str()))
@@ -117,12 +116,12 @@ namespace Arduino
 		return this->m_serial.WriteData((BYTE*)&data, sizeof(data)) ? Result::SUCCESS : Result::FAIL;
 	}
 
-	Result ArduinoUtil::key(UINT virtualKeyCode, KeyType type)
+	Result ArduinoUtil::key(UINT keyCode, KeyType type)
 	{
 		INPUT_DATA data = { 0, };
 		data.inputType = (BYTE)InputDataType::KEY;
 		data.data1 = (INT16)type;
-		data.data2 = this->virtualToArduino(virtualKeyCode);
+		data.data2 = keyCode;
 
 		return this->m_serial.WriteData((BYTE*)&data, sizeof(data)) ? Result::SUCCESS : Result::FAIL;
 	}
@@ -153,19 +152,20 @@ namespace Arduino
 		*/
 		for (INT idx = 0; idx < lstrlen(writeString); idx++)
 		{
-			if (this->press(writeString[idx]) == Result::FAIL) return Result::FAIL;
+			BYTE keyCode = this->virtualToArduino(writeString[idx]);
+			if (this->press(keyCode) == Result::FAIL) return Result::FAIL;
 		}
 
 		return Result::SUCCESS;
 	}
 
-	Result ArduinoUtil::press(UINT virtualKeyCode, UINT waitTime)
+	Result ArduinoUtil::press(UINT keyCode, UINT waitTime)
 	{
 		Result result;
 
-		result = this->key(virtualKeyCode, KeyType::KEY_DOWN);
+		result = this->key(keyCode, KeyType::KEY_DOWN);
 		Sleep(waitTime);
-		result = this->key(virtualKeyCode, KeyType::KEY_UP);
+		result = this->key(keyCode, KeyType::KEY_UP);
 		Sleep(waitTime);
 
 		return result;
