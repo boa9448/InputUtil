@@ -7,6 +7,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ClassDDTest", "ClassDDTest\
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "InputUtil_DLL", "InputUtil_DLL\InputUtil_DLL.vcxproj", "{C00D646F-16FC-44FB-9339-57A0A2B6F81E}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ArduinoTest", "ArduinoTest\ArduinoTest.vcxproj", "{8E17DF18-F750-4868-BA79-7CE7743FA54C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -31,6 +33,14 @@ Global
 		{C00D646F-16FC-44FB-9339-57A0A2B6F81E}.Release|x64.Build.0 = Release|x64
 		{C00D646F-16FC-44FB-9339-57A0A2B6F81E}.Release|x86.ActiveCfg = Release|Win32
 		{C00D646F-16FC-44FB-9339-57A0A2B6F81E}.Release|x86.Build.0 = Release|Win32
+		{8E17DF18-F750-4868-BA79-7CE7743FA54C}.Debug|x64.ActiveCfg = Debug|x64
+		{8E17DF18-F750-4868-BA79-7CE7743FA54C}.Debug|x64.Build.0 = Debug|x64
+		{8E17DF18-F750-4868-BA79-7CE7743FA54C}.Debug|x86.ActiveCfg = Debug|Win32
+		{8E17DF18-F750-4868-BA79-7CE7743FA54C}.Debug|x86.Build.0 = Debug|Win32
+		{8E17DF18-F750-4868-BA79-7CE7743FA54C}.Release|x64.ActiveCfg = Release|x64
+		{8E17DF18-F750-4868-BA79-7CE7743FA54C}.Release|x64.Build.0 = Release|x64
+		{8E17DF18-F750-4868-BA79-7CE7743FA54C}.Release|x86.ActiveCfg = Release|Win32
+		{8E17DF18-F750-4868-BA79-7CE7743FA54C}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

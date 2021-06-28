@@ -86,12 +86,6 @@ namespace Arduino
 		, WHEEL
 	};
 
-	typedef struct _charData
-	{
-		DWORD mod;
-		CHAR c;
-	}CHAR_DATA;
-
 #pragma pack(push, 1)
     typedef struct _InputData
     {
