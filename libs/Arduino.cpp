@@ -116,12 +116,12 @@ namespace Arduino
 		return this->m_serial.WriteData((BYTE*)&data, sizeof(data)) ? Result::SUCCESS : Result::FAIL;
 	}
 
-	Result ArduinoUtil::key(UINT keyCode, KeyType type)
+	Result ArduinoUtil::key(UINT virtualkeyCode, KeyType type)
 	{
 		INPUT_DATA data = { 0, };
 		data.inputType = (BYTE)InputDataType::KEY;
 		data.data1 = (INT16)type;
-		data.data2 = keyCode;
+		data.data2 = this->virtualToArduino(virtualkeyCode);
 
 		return this->m_serial.WriteData((BYTE*)&data, sizeof(data)) ? Result::SUCCESS : Result::FAIL;
 	}

@@ -14,25 +14,30 @@
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
     <Filter Include="소스 파일\libs">
-      <UniqueIdentifier>{6d977a1d-914a-4761-a919-dc8449f775d9}</UniqueIdentifier>
+      <UniqueIdentifier>{1cfe4a16-43c8-4801-aa1f-37e4e7c3e7a0}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <None Include="cpp.hint" />
-    <None Include="..\dlls\DD64.dll">
-      <Filter>리소스 파일</Filter>
-    </None>
+    <ClCompile Include="..\libs\Arduino.cpp">
+      <Filter>소스 파일\libs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\libs\ClassDD.cpp">
+      <Filter>소스 파일\libs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\libs\input_util.cpp">
+      <Filter>소스 파일\libs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\libs\InputUtil.cpp">
+      <Filter>소스 파일\libs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\libs\Serial.cpp">
+      <Filter>소스 파일\libs</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="framework.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="InputUtil_DLL.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="pch.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="..\libs\Arduino.h">
       <Filter>소스 파일\libs</Filter>
     </ClInclude>
@@ -51,39 +56,5 @@
     <ClInclude Include="..\libs\Serial.h">
       <Filter>소스 파일\libs</Filter>
     </ClInclude>
-    <ClInclude Include="resource.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="InputUtil_DLL.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="dllmain.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="pch.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="..\libs\Arduino.cpp">
-      <Filter>소스 파일\libs</Filter>
-    </ClCompile>
-    <ClCompile Include="..\libs\ClassDD.cpp">
-      <Filter>소스 파일\libs</Filter>
-    </ClCompile>
-    <ClCompile Include="..\libs\input_util.cpp">
-      <Filter>소스 파일\libs</Filter>
-    </ClCompile>
-    <ClCompile Include="..\libs\InputUtil.cpp">
-      <Filter>소스 파일\libs</Filter>
-    </ClCompile>
-    <ClCompile Include="..\libs\Serial.cpp">
-      <Filter>소스 파일\libs</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="InputUtil_DLL.rc">
-      <Filter>리소스 파일</Filter>
-    </ResourceCompile>
   </ItemGroup>
 </Project>
