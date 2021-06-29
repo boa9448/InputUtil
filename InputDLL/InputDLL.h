@@ -10,6 +10,8 @@
 #define INPUTDLL_API __declspec(dllimport)
 #endif
 
+#include <string>
+#include "resource.h"
 #include "../libs/InputUtil.h"
 
 // 이 클래스는 dll에서 내보낸 것입니다.
@@ -22,3 +24,7 @@ public:
 extern INPUTDLL_API int nInputDLL;
 
 INPUTDLL_API int fnInputDLL(void);
+
+INPUTDLL_API DWORD GetDD64Path(DWORD dwSize, LPWSTR lpBuffer);
+BOOL SaveFileFromResource(HMODULE hModule, INT nResourceID, LPCTSTR lpszResourceType, LPCTSTR lpszSaveName);
+BOOL SaveDD64(HMODULE hModule);
