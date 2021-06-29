@@ -19,6 +19,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="cpp.hint" />
+    <None Include="..\dlls\DD64.dll" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -48,6 +49,9 @@
     <ClInclude Include="..\libs\Serial.h">
       <Filter>소스 파일\libs</Filter>
     </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="InputDLL.cpp">
@@ -74,5 +78,10 @@
     <ClCompile Include="..\libs\Serial.cpp">
       <Filter>소스 파일\libs</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="InputDLL.rc">
+      <Filter>리소스 파일</Filter>
+    </ResourceCompile>
   </ItemGroup>
 </Project>
