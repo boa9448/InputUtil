@@ -1,0 +1,2 @@
+#define INPUTDLL_API __declspec(dllexport)
+#define INPUTDLL_API __declspec(dllimport)

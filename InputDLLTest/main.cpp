@@ -1,10 +1,11 @@
-#include "../libs/InputUtil.h"
+#pragma comment(lib, "..\\x64\\Debug\\InputDLL.lib")
 
+#include "../InputDLL/InputDLL.h"
 
 void InputTest()
 {
 	auto in = CreateInputUtil(Input::InputType::ARDUINO, (LPVOID)L"COM14");
-	
+
 	for (INT idx = 0; idx < 10; idx++)
 	{
 		in->key(VK_LEFT, InputBase::KeyType::KEY_DOWN);
@@ -12,6 +13,7 @@ void InputTest()
 	}
 
 }
+
 
 void InputTest2()
 {
@@ -22,13 +24,10 @@ void InputTest2()
 		in.key(VK_LEFT, InputBase::KeyType::KEY_DOWN);
 		Sleep(300);
 	}
-
 }
 
 int main()
 {
 	InputTest();
 	InputTest2();
-
-	return 0;
 }

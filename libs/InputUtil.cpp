@@ -52,4 +52,9 @@ namespace Input
 		return this->m_inputObject->str(writeString);
 	}
 
+	std::shared_ptr<InputUtil> CreateInputUtil(InputType type, LPVOID param)
+	{
+		return std::shared_ptr<InputUtil>(new InputUtil(type, param));
+	}
+
 }
