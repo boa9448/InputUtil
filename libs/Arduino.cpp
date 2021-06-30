@@ -126,6 +126,16 @@ namespace Arduino
 		return this->m_serial.WriteData((BYTE*)&data, sizeof(data)) ? Result::SUCCESS : Result::FAIL;
 	}
 
+	Result ArduinoUtil::chr(UINT virtualkeyCode, KeyType type)
+	{
+		INPUT_DATA data = { 0, };
+		data.inputType = (BYTE)InputDataType::KEY;
+		data.data1 = (INT16)type;
+		data.data2 = virtualkeyCode;
+
+		return this->m_serial.WriteData((BYTE*)&data, sizeof(data)) ? Result::SUCCESS : Result::FAIL;
+	}
+
 	Result ArduinoUtil::wheel(UINT count, WheelType type)
 	{
 		INPUT_DATA data = { 0, };
@@ -152,20 +162,22 @@ namespace Arduino
 		*/
 		for (INT idx = 0; idx < lstrlen(writeString); idx++)
 		{
-			BYTE keyCode = this->virtualToArduino(writeString[idx]);
-			if (this->press(keyCode) == Result::FAIL) return Result::FAIL;
+			if (this->chr(writeString[idx], InputBase::KeyType::KEY_DOWN) == Result::FAIL) return Result::FAIL;
+			Sleep(30);
+			if (this->chr(writeString[idx], InputBase::KeyType::KEY_UP) == Result::FAIL) return Result::FAIL;
+			Sleep(30);
 		}
 
 		return Result::SUCCESS;
 	}
 
-	Result ArduinoUtil::press(UINT keyCode, UINT waitTime)
+	Result ArduinoUtil::press(UINT virtualkeyCode, UINT waitTime)
 	{
 		Result result;
 
-		result = this->key(keyCode, KeyType::KEY_DOWN);
+		result = this->key(virtualkeyCode, KeyType::KEY_DOWN);
 		Sleep(waitTime);
-		result = this->key(keyCode, KeyType::KEY_UP);
+		result = this->key(virtualkeyCode, KeyType::KEY_UP);
 		Sleep(waitTime);
 
 		return result;

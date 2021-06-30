@@ -50,7 +50,7 @@ END
 // DLL
 //
 
-IDR_DLL_DD64            DLL                     "E:\\source\\repos\\InputUtil\\dlls\\DD64.dll"
+IDR_DLL_DD64            DLL                     "..\\dlls\\DD64.dll"
 
 #endif    // 한국어(대한민국) resources
 /////////////////////////////////////////////////////////////////////////////

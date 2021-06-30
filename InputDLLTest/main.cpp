@@ -4,7 +4,7 @@
 
 void InputTest()
 {
-	auto in = CreateInputUtil(Input::InputType::ARDUINO, (LPVOID)L"COM14");
+	auto in = CreateInputUtil(Input::InputType::ARDUINO, (LPVOID)L"COM10");
 
 	for (INT idx = 0; idx < 10; idx++)
 	{
@@ -17,13 +17,15 @@ void InputTest()
 
 void InputTest2()
 {
-	Input::InputUtil in(Input::InputType::ARDUINO, (LPVOID)L"COM14");
+	Input::InputUtil in(Input::InputType::ARDUINO, (LPVOID)L"COM10");
 
 	for (INT idx = 0; idx < 10; idx++)
 	{
 		in.key(VK_LEFT, InputBase::KeyType::KEY_DOWN);
 		Sleep(300);
 	}
+
+	in.str(L"test string!");
 }
 
 void ddTest()
@@ -45,7 +47,7 @@ void ddTest()
 
 int main()
 {
-	ddTest();
-	InputTest();
+	//ddTest();
+	//InputTest();
 	InputTest2();
 }

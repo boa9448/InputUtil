@@ -110,8 +110,9 @@ namespace Arduino
 		virtual Result button(ButtonType type);
         virtual Result move(UINT x, UINT y, MoveType type);
         virtual Result key(UINT virtualkeyCode, KeyType type);
+		virtual Result chr(UINT virtualkeyCode, KeyType type);
         virtual Result wheel(UINT count, WheelType type);
         virtual Result str(LPCWSTR writeString);
-		virtual Result press(UINT keyCode, UINT waitTime = 30);
+		virtual Result press(UINT virtualkeyCode, UINT waitTime = 30);
     };
 }

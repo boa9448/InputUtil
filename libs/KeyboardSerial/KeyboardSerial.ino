@@ -63,17 +63,30 @@ void loop()
             ((byte*)&data)[idx] = Serial.read();
         }
 
-        mySerial.print("type : ");
+        /*mySerial.print("type : ");
         mySerial.println(data.inputType);
         mySerial.print("data1 : ");
         mySerial.println(data.data1);
         mySerial.print("data2 : ");
-        mySerial.println(data.data2);
+        mySerial.println(data.data2);*/
 
         if(data.inputType == (byte)InputDataType::KEY)
         {
             if(data.data1 == (int16_t)KeyType::KEY_DOWN) Keyboard.write(data.data2);
             else if(data.data1 == (int16_t)KeyType::KEY_UP) Keyboard.release(data.data2);
+            else if(data.data1 == (int16_t)KeyType::KEY_PRESS) Keyboard.press(data.data2);
+        }
+        else if(data.inputType == (byte)InputDataType::MOUSE)
+        {
+          
+        }
+        else if(data.inputType == (byte)InputDataType::BUTTON)
+        {
+          
+        }
+        else if(data.inputType == (byte)InputDataType::WHEEL)
+        {
+          
         }
     }
 }
