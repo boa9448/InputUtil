@@ -1,5 +1,6 @@
 #include <SoftwareSerial.h>
-#include "Keyboard.h"
+#include <Keyboard.h>
+#include <Mouse.h>
 
 enum class ButtonType
 {
@@ -51,6 +52,7 @@ void setup()
     Serial.begin(9600);
     mySerial.begin(9600);
     Keyboard.begin();
+    Mouse.begin();
 }
 
 void loop()
@@ -78,15 +80,16 @@ void loop()
         }
         else if(data.inputType == (byte)InputDataType::MOUSE)
         {
-          
+            Mouse.move(data.data1, data.data2, 0);
         }
         else if(data.inputType == (byte)InputDataType::BUTTON)
         {
-          
+            
         }
         else if(data.inputType == (byte)InputDataType::WHEEL)
         {
-          
+            unsigned char way = data.data1 == (int16_t)WheelType::WHEEL_DOWN ? data.data2 : data.data2 * -1;
+            Mouse.move(0, 0, way);
         }
     }
 }
