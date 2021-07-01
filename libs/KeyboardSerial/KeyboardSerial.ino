@@ -84,7 +84,23 @@ void loop()
         }
         else if(data.inputType == (byte)InputDataType::BUTTON)
         {
-            
+            // 다듬어야 하는 코드 블럭
+            if(data.data1 == (int16_t)ButtonType::LEFT_BUTTON_DOWN)
+            {
+                Mouse.press(MOUSE_LEFT);
+            }
+            else if(data.data1 == (int16_t)ButtonType::RIGHT_BUTTON_DOWN)
+            {
+                Mouse.press(MOUSE_RIGHT);
+            }
+            else if(data.data1 == (int16_t)ButtonType::LEFT_BUTTON_UP)
+            {
+                Mouse.release(MOUSE_LEFT);
+            }
+            else if(data.data1 == (int16_t)ButtonType::RIGHT_BUTTON_UP)
+            {
+                Mouse.release(MOUSE_RIGHT);
+            }
         }
         else if(data.inputType == (byte)InputDataType::WHEEL)
         {
