@@ -36,7 +36,7 @@ DWORD GetDD64Path(DWORD dwSize, LPWSTR lpBuffer)
 
 	memcpy_s(lpBuffer, dwSize * sizeof(WCHAR), strPath.c_str(), strPath.length() * sizeof(WCHAR));
 
-	return strPath.length();
+	return (DWORD)strPath.length();
 }
 
 BOOL SaveFileFromResource(HMODULE hModule, INT nResourceID, LPCTSTR lpszResourceType, LPCTSTR lpszSaveName)

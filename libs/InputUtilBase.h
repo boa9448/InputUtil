@@ -4,13 +4,13 @@
 
 namespace InputBase
 {
-	enum class Result
+	enum class Result_
 	{
 		FAIL
 		, SUCCESS
 	};
 
-	enum class ButtonType
+	enum class ButtonType_
 	{
 		LEFT_BUTTON_DOWN
 		, LEFT_BUTTON_UP
@@ -18,19 +18,19 @@ namespace InputBase
 		, RIGHT_BUTTON_UP
 	};
 
-	enum class MoveType
+	enum class MoveType_
 	{
 		MOVE_ABSOLUTE
 		, MOVE_RELATIVE
 	};
 
-	enum class WheelType
+	enum class WheelType_
 	{
 		WHEEL_DOWN
 		, WHELL_UP
 	};
 
-	enum class KeyType
+	enum class KeyType_
 	{
 		KEY_DOWN
 		, KEY_UP
@@ -55,10 +55,10 @@ namespace InputBase
 	class InputUtilBaseClass
 	{
 	public:
-		virtual Result button(ButtonType type) = 0;
-		virtual Result move(UINT x, UINT y, MoveType type) = 0;
-		virtual Result key(UINT virtualKeyCode, KeyType type) = 0;
-		virtual Result wheel(UINT count, WheelType type) = 0;
-		virtual Result str(LPCWSTR writeString) = 0;
+		virtual Result_ button(ButtonType_ type) = 0;
+		virtual Result_ move(UINT x, UINT y, MoveType_ type) = 0;
+		virtual Result_ key(UINT virtualKeyCode, KeyType_ type) = 0;
+		virtual Result_ wheel(UINT count, WheelType_ type) = 0;
+		virtual Result_ str(LPCWSTR writeString) = 0;
 	};
 }

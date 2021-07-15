@@ -107,12 +107,12 @@ namespace Arduino
 		BYTE virtualToArduino(BYTE vkCode);
 		static std::vector<std::wstring> getPortList();
 
-		virtual Result button(ButtonType type);
-        virtual Result move(UINT x, UINT y, MoveType type);
-        virtual Result key(UINT virtualkeyCode, KeyType type);
-		virtual Result chr(UINT virtualkeyCode, KeyType type);
-        virtual Result wheel(UINT count, WheelType type);
-        virtual Result str(LPCWSTR writeString);
-		virtual Result press(UINT virtualkeyCode, UINT waitTime = 30);
+		virtual Result_ button(ButtonType_ type);
+        virtual Result_ move(UINT x, UINT y, MoveType_ type);
+        virtual Result_ key(UINT virtualkeyCode, KeyType_ type);
+		virtual Result_ chr(UINT virtualkeyCode, KeyType_ type);
+        virtual Result_ wheel(UINT count, WheelType_ type);
+        virtual Result_ str(LPCWSTR writeString);
+		virtual Result_ press(UINT virtualkeyCode, UINT waitTime = 30);
     };
 }

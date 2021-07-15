@@ -13,10 +13,10 @@ namespace ClassDD
 		, m_pfDD_todc(NULL)
 	{
 		this->m_buttonMap = {
-			{ButtonType::LEFT_BUTTON_DOWN, DD_BTN_LBUTTONDOWN}
-			, {ButtonType::LEFT_BUTTON_UP, DD_BTN_LBUTTONUP}
-			, {ButtonType::RIGHT_BUTTON_DOWN, DD_BTN_RBUTTONDOWN}
-			, {ButtonType::RIGHT_BUTTON_UP, DD_BTN_RBUTTONUP}
+			{ButtonType_::LEFT_BUTTON_DOWN, DD_BTN_LBUTTONDOWN}
+			, {ButtonType_::LEFT_BUTTON_UP, DD_BTN_LBUTTONUP}
+			, {ButtonType_::RIGHT_BUTTON_DOWN, DD_BTN_RBUTTONDOWN}
+			, {ButtonType_::RIGHT_BUTTON_UP, DD_BTN_RBUTTONUP}
 		};
 	}
 
@@ -112,41 +112,41 @@ namespace ClassDD
 		return this->DD_key(this->DD_todc(virtualKeyCode), param);
 	}
 
-	Result DD::button(ButtonType type)
+	Result_ DD::button(ButtonType_ type)
 	{
 		INT ddType = this->m_buttonMap[type];
 
-		if (ddType == 0) return Result::FAIL;
+		if (ddType == 0) return Result_::FAIL;
 		this->m_pfDD_btn(ddType);
 
-		return Result::SUCCESS;
+		return Result_::SUCCESS;
 	}
 
-	Result DD::move(UINT x, UINT y, MoveType type)
+	Result_ DD::move(UINT x, UINT y, MoveType_ type)
 	{
-		if (type == MoveType::MOVE_ABSOLUTE) this->m_pfDD_mov(x, y);
-		else if (type == MoveType::MOVE_RELATIVE) this->m_pfDD_movR(x, y);
-		else return Result::FAIL;
+		if (type == MoveType_::MOVE_ABSOLUTE) this->m_pfDD_mov(x, y);
+		else if (type == MoveType_::MOVE_RELATIVE) this->m_pfDD_movR(x, y);
+		else return Result_::FAIL;
 
-		return Result::SUCCESS;
+		return Result_::SUCCESS;
 	}
 
-	Result DD::key(UINT virtualKeyCode, KeyType type)
+	Result_ DD::key(UINT virtualKeyCode, KeyType_ type)
 	{
 		UINT ddCode = this->m_pfDD_todc(virtualKeyCode);
-		INT ddKeyType = type == KeyType::KEY_DOWN ? DD_KEY_DOWN : DD_KEY_UP;
+		INT ddKeyType = type == KeyType_::KEY_DOWN ? DD_KEY_DOWN : DD_KEY_UP;
 		this->m_pfDD_key(ddCode, ddKeyType);
 
-		return Result::SUCCESS;
+		return Result_::SUCCESS;
 	}
 
-	Result DD::wheel(UINT count, WheelType type)
+	Result_ DD::wheel(UINT count, WheelType_ type)
 	{
-		return Result::SUCCESS;
+		return Result_::SUCCESS;
 	}
 
-	Result DD::str(LPCWSTR writeString)
+	Result_ DD::str(LPCWSTR writeString)
 	{
-		return Result::SUCCESS;
+		return Result_::SUCCESS;
 	}
 }

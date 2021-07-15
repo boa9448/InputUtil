@@ -7,7 +7,7 @@ void InputTest()
 	
 	for (INT idx = 0; idx < 10; idx++)
 	{
-		in->key(VK_LEFT, InputBase::KeyType::KEY_DOWN);
+		in->key(VK_LEFT, Input::KeyType::KEY_DOWN);
 		Sleep(300);
 	}
 
@@ -19,7 +19,7 @@ void InputTest2()
 
 	for (INT idx = 0; idx < 10; idx++)
 	{
-		in.key(VK_LEFT, InputBase::KeyType::KEY_DOWN);
+		in.key(VK_LEFT, Input::KeyType::KEY_DOWN);
 		Sleep(300);
 	}
 
