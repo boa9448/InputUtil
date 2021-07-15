@@ -38,9 +38,9 @@ void ddTest()
 
 	for (INT a = 0; a < 10; a++)
 	{
-		dd.key(VK_LEFT, InputBase::KeyType_::KEY_DOWN);
+		dd.key(VK_LEFT, Input::KeyType::KEY_DOWN);
 		Sleep(100);
-		dd.key(VK_LEFT, InputBase::KeyType_::KEY_UP);
+		dd.key(VK_LEFT, Input::KeyType::KEY_UP);
 		Sleep(100);
 	}
 }

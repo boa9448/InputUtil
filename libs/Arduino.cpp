@@ -148,17 +148,8 @@ namespace Arduino
 
 	Result_ ArduinoUtil::str(LPCWSTR writeString)
 	{
-		/*std::wstring temp = writeString;
-		std::vector<CHAR_DATA> buf(temp.length());
-		for (auto& c : temp)
-		{
-			CHAR_DATA data = { 0, c };
-			if (!std::islower(c)) data.mod = VK_SHIFT;
-
-			buf.push_back(data);
-		}
-
-		//여기서 실제 키입력 작업 작성할것.
+		/*
+		여기서 실제 키입력 작업 작성할것.
 		*/
 		for (INT idx = 0; idx < lstrlen(writeString); idx++)
 		{

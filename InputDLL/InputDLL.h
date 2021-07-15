@@ -14,6 +14,8 @@
 #include "resource.h"
 #include "../libs/InputUtil.h"
 
+using namespace InputBase;
+
 // 이 클래스는 dll에서 내보낸 것입니다.
 class INPUTDLL_API CInputDLL {
 public:
